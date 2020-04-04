@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1585059552472.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "9CA209CE",
+    "lastKnownWriteTime" : 1585060085,
+    "last_content_update" : 1585060085,
+    "path" : "C:/Users/DELL/Desktop/Data_Science_in_R/Rmarkdown.Rmd",
+    "project_path" : "Rmarkdown.Rmd",
+    "properties" : {
+        "cursorPosition" : "36,0",
+        "last_setup_crc32" : "",
+        "scrollLine" : "0",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}
