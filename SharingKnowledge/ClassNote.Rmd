@@ -1,0 +1,244 @@
+---
+title: "Class notebook - Bài 1"
+author: "Thanh Kim"
+date: "18/08/2020"
+output:
+  pdf_document: default
+  html_document: default
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+Những vấn đề cơ bản với R
+=========================
+
+## Tính toán cơ bản
+R có thể làm được các phép tính toán cơ bản tương tự Stata. Một số phép tính phổ biến như sau:
+
+|Phép tính|Câu lệnh|  
+|---------|--------|  
+| Cộng | + |
+| Trừ | - |
+| Nhân | * |
+| Chia | / |
+| Mũ | ^ |
+| Căn bậc 2 | sqrt() |
+| log cơ số 10 | log10 |
+| log tự nhiên | log |
+
+Trong Stata, chúng ta cần đặt câu lệnh **di** ở trước mỗi phép tính. Ở R, chúng ta thoải mái nhập thẳng vào Console và nhận kết quả ở đó.
+```{r echo=TRUE}
+(1 - 3 + 4*2)/sqrt(10) + log10(100)
+```
+
+## Gán dữ liệu
+Chúng ta sử dụng dấu **<-** để gán dữ liệu. Trong trường hợp này, ta muốn gán giá trị 1 và đối tượng x.  
+```{r}
+x <- 1
+x
+msg <- "hello"
+msg
+```
+
+>Cần lưu ý rằng R phân biệt chữ hoa và chữ thường.  
+
+Chúng ta có thể ghi chú bằng cách thêm **#** đằng trước mỗi ghi chú. R sẽ không chạy những gì ở phía sau __#__.
+Dấu **#** là kí tự duy nhất giúp ghi chú trong R. Ngược lại, trong Stata ta có thể sử dụng **//** hoặc __\*__  để ghi chú.
+
+```{r}
+X <- 3 # Cái này sẽ khác với x <- 1
+print(X)
+```
+
+## Trình bày dữ liệu
+Có thể thấy ở trên, chúng ta có 2 cách xuất dữ liệu vào Console
+```{r}
+x <- 1 
+x # Cách 1
+X <- 3
+print(X)  #Cách 2
+```
+
+Bên cạnh đó, chúng ta có thể nhìn dữ liệu ở cửa sổ __Source__ bằng cách sử dụng lệnh View()
+```{r}
+msg <- "Hello"
+View(msg) # Cách 3
+```
+
+Đối tượng R (R Object)
+======================
+Tất cả những gì được gán giá trị, và xuất hiện trong cửa sổ __Environment__, đều được gọi là Đối tượng R, hay là R Objects.
+
+Đối tượng R có nhiều cấu trúc dữ liệu  
+1. Vector  
+2. Matrix  
+3. List  
+4. Data Frame  
+
+Đầu tiên ta đến với Vector.
+
+## Vector
+Vector có thể được hiểu đơn giản là một biến số.
+Đây là cấu trúc đơn giản nhất của R Object. Giống như tế bào là đơn vị nhỏ nhất của cơ thể.
+
+Vector có 5 nhóm
+- Character
+- Numeric (số thực)
+- Integer (số nguyên)
+- Complex (số phức)
+- Logical (TRUE/FALSE)
+
+>Vector chỉ chứa những giá trị có trong cùng 1 nhóm.
+
+#### Numeric
+Có nhiều cách để tạo numeric vector
+
+```{r}
+# Trực tiếp gán giá trị
+x <- 1:10 
+x
+class(x)
+y <- seq(from = 1, to = 10,by = 2)
+y
+class(y)
+z <- c(1,11,5,10) # c() nghĩa là combine, tức là kết nối các giá trị thành vector
+z
+class(z)
+
+# Hoặc tạo numeric vector trống. Sau đó ta sẽ thêm giá trị vào sau
+a <- vector(mode = "numeric", length = 10)
+print(a)
+class(a)
+```
+
+#### Character
+Tất cả các giá trị nhóm character đều ở trong dấu nháy kép "", hoặc nháy đơn ''
+```{r}
+myname <- c("Kim","Van","Thanh")
+print(myname)
+class(myname)
+number <- c("one","2","3","four")
+number
+class(number)
+```
+
+#### Logic
+
+Vector dạng logic sẽ có 2 giá trị là TRUE và FALSE. TRUE và FALSE có thể viết tắt là T và F.
+
+> Giá trị TRUE và FALSE **không** ở trong ngoặc kép, nếu không sẽ được hiểu là character
+
+```{r}
+logic <- c(TRUE, FALSE, T, F)
+logic
+class(logic)
+```
+
+Một điều thú vị là, R hiểu TRUE tương ứng với 1, vòn FALSE là 0.
+
+```{r}
+logic <- c(TRUE, FALSE, T, F)
+sum(logic)  ## Cộng các giá trị trong vector lại
+
+# Cơ chế như sau
+TRUE + FALSE + TRUE + FALSE
+```
+
+
+## Chuyển nhóm dữ liệu
+
+Đôi khi R object thuộc các nhóm khác nhau được trộn chung lại. Khi đó hiện tượng chuyển nhóm dữ liệu (coercion) sẽ diễn ra. Nó đảm bảo rằng các giá trị trong một vector ở cùng một nhóm dữ liệu.
+
+```{r}
+x <- c(1.7,"a")
+x ## Chuyển về character
+class(x)
+y <- c(TRUE, 2) 
+y ## Chuyển về numeric
+class(y)
+z <- c("a", TRUE)
+z ## Chuyển về character
+class(z)
+```
+
+Chúng ta cũng có thể chuyển nhóm dữ liệu bằng hệ thống các hàm có cấu trúc như sau as + nhóm dữ liệu muốn chuyển. Ví dụ as.numeric, as.character.
+
+```{r}
+x <- 0:6
+print(x)
+class(x)
+x <- as.numeric(x)
+print(x)
+class(x)
+a <- as.logical(x)
+print(a) ## Lưu ý: 0 được hiểu là FALSE, còn các giá trị khác 0 là TRUE
+b <- as.character(x)
+print(b)
+```
+
+Thỉnh thoảng, R không biết làm sao để chuyển dạng, và nó sẽ tạo ra NA (Non Applicaty), hay có thể hiểu là giá trị khuyết (missing data).
+
+```{r}
+x <- c("a","b","c")
+as.numeric(x)
+as.logical(x)
+as.complex(x)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Matrix (ma trận)
+Matrix là vector + dimension (2 chiều).
+
+Bản thân đặc tính dimension này là một integer vecotor có độ dài là 2, giá trị thứ nhất là số hàng, giá trị thứ hai là số cột.
+
+```{r}
+m <- matrix(1:10, nrow=2, ncol = 5)
+m
+dim(m)
+attributes(m)
+```
+
+Các giá trị của matrix được đổ theo cột (collumn-wise).
+
+Matrix có thể được được tạo bằng cách gán đặc tính (dimension attributes) vào vector.
+```{r}
+m <- 1:10
+m
+dim(m) ## Vì m là vector nên không có dimension attributes
+dim(m) <- c(5,2) ## Gán gái trị cho dimension attributes, với số hàng là 5, số cột là 2
+m
+```
+
+Hoặc, matrix được tạo bằng cách ghép các vector `cùng độ dài` lại
+```{r}
+x <- 1:3 # Độ dài 3
+y <- 10:12 # Độ dài 3
+cbind(x,y) # Ghép theo cột
+rbind(x,y) # GHép theo hàng
+```
+
+
+

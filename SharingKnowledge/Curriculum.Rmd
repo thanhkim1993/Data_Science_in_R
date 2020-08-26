@@ -1,0 +1,84 @@
+---
+title: "Chương trình Phân tích dữ liệu Hè 2020"
+author: "Thanh Kim"
+date: "16/08/2020"
+output:
+  html_document:
+    df_print: paged
+---
+
+__Chuyên đề: "Ứng dụng ngôn ngữ R trong phân tích dữ liệu Y sinh"__
+===================================================================
+
+__Đối tượng tham gia__: Băng đảng YTCC  
+
+
+__Mục tiêu__: Chuyển đổi từ Stata qua R, và một số tò mò khác  
+
+__Tinh thần chính của chuyên đề__: Không gian giao lưu, trao đổi kiến thức Phân tích dữ liệu và R
+
+__Chương trình dự kiến__ (Có thể thay đổi theo hứng):
+
+* Bài 1: Giới thiệu R và R studio
+
+* Bài 2: Những trò cơ bản với R
+
+* Bài 3: Thực hành những trò cơ bản với R
+
+* Bài 4: Cuộc đời là một vòng lặp (Cơ bản)
+
+* Bài 5: Thực hành vòng lặp (Cơ bản)
+
+* Bài 6: Vệ sinh và tỉa tót (Dữ liệu)
+
+* Bài 7: Thực hành vệ sinh và tỉa tót (Dữ liệu)
+
+* Bài 8: Tìm hiểu, khám phá, mò mẫm (dữ liệu)
+
+* Bài 9: Thực hành tìm hiểu, khám phá, và mò mẫm
+
+* Bài 10: Có thể sinh sản nhiều ??!! (hay Reproducible Research)
+
+* Bài 11: Thực hành sinh sản nhiều ??!! (hay Reproducible Research)
+
+* Bài 12: Suy diễn, tưởng tượng (thống kê)
+
+* Bài 13: Thực hành suy diễn, tưởng tượng (thống kê)
+
+* Bài 14: Đầu quy là hồi tiên (Đầu tiên là hồi quy)
+
+* Bài 15: Thực hành đầu quy là hồi tiên
+
+__Thời gian dự kiến:__ 3 tháng. Có thể nhanh hoặc chậm hơn. Tuy nhiên mình cứ thoải mái và học theo tiến độ của nhóm.
+
+__Giáo trình học__ 
+
+PPT Tiếng Việt.
+
+_Giáo trình được xây dựng từ những sách dưới đây. Mọi người có thể tìm đọc. Tất cả đều miễn phí._
+
+[Bài 1 - Bài 6](https://leanpub.com/rprogramming)
+
+[Bài 8 - Bài 9](https://leanpub.com/exdata)
+
+[Bài 9 - Bài 10](https://leanpub.com/reportwriting)
+
+[Bài 12 - Bài 13](https://leanpub.com/LittleInferenceBook/read#leanpub-auto-t-test-in-r)
+
+[Bài 14 - Bài 15](https://leanpub.com/regmods)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

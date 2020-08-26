@@ -1,0 +1,106 @@
+---
+title: 'Bài 1: Giới thiệu R'
+author: "Thanh Kim"
+date: "17/08/2020"
+
+output:
+  ioslides_presentation: default
+  powerpoint_presentation: default
+  slidy_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Chào mừng đến với R!
+```{r}
+  par(mar=c(0.1,0.1,0.1,0.1))
+    smoothScatter(rnorm(10000), rnorm(10000))
+```
+
+## Nội dung
+
+Giới thiệu R
+
+Bắt đầu với R
+
+Những vấn đề cơ bản
+
+# Giới thiệu R
+
+## Giới thiệu R
+
+- R là gì?  
+- Đặc tính cơ bản của R  
+- Giới hạn của R  
+- Hệ thống R  
+- Các nguồn tài nguyên dành cho R  
+
+## R là gì?
+
+- Xuất phát từ ngôn ngữ S  
+- Từ năm 1976  
+- Phần mềm S-Plus  
+- Triết lý: "User to Developer"   
+- Năm 1997, R được phát triển và phân phối miễn phí  
+
+## Đặc tính của R
+
+- Miễn phí
+- Gọn gàng
+- Các chức năng từ các package
+- Hình ảnh, đồ họa rất chi tiết và tốt hơn hầu hết các phần mềm Phân tích số liệu khác
+- Cộng đồng sử dụng rất năng động: R-community, StackOverFlow
+- Package thường xuyên cập nhật
+- Người sử dụng tự cập nhật theo nhu cầu
+
+## Giới hạn của R
+- Không hỗ trợ ảnh động và 3D  
+- Đối tượng được lưu trong RAM  
+
+## Hệ thống R
+Hệ thống R gồm 2 phần  
+- Hệ thống 'base'  
+- Các hệ thống khác  
+
+## Hệ thống R
+Chức năng R được phân thành các packages  
+- 'Base' packages: Các chức năng nền tảng  
+- Các package khác thuộc về 'Base'  
+- Các package khác  
+
+## Nguồn tài nguyên R package
+CRAN - The Comprehensive R Archive Network  
+ - Base package  
+ - Các packages thuộc về 'Base  
+ - Các package chính khác  
+BioConductor, trang web cá nhân.  
+ - Các Package khác  
+
+# Bắt đầu với R
+## Bắt đầu với R
+
+- Cài đặt
+- Làm quen với giao diện R
+
+# Những vấn đề cơ bản
+## Các thao tác
+- Nhập dữ liệu  
+- Xuất kết quả (Evaluation)  
+- Đối tượng trong R (R Object)  
+- Số  
+- Đặc tính   
+- Tạo Vector  
+- Phối hợp đối tượng  
+- Coercion (Ép buộc dữ liệu)  
+
+## Các cấu trúc dữ liệu đặc biệt
+- Matrix (Ma trận)
+- List (Danh sách)
+- Factor (Nhân tố)
+- Dữ liệu khuyết
+- Data Frame (Khung dữ liệu)
+- Tên
+
+# Cám ơn mọi người!!!

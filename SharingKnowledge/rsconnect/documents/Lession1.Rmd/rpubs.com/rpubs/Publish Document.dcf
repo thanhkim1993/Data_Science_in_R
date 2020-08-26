@@ -1,0 +1,10 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/649686/2cec01a2a1494a35bf30e7df2accfccd
+bundleId: https://api.rpubs.com/api/v1/document/649686/2cec01a2a1494a35bf30e7df2accfccd
+url: http://rpubs.com/ThanhKim/649686
+when: 1597653133.53892

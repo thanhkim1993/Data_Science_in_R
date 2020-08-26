@@ -1,0 +1,143 @@
+\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provides euro and other symbols
+\else % if luatex or xelatex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Chương trình học},
+  pdfauthor={Thanh Kim},
+  pdfborder={0 0 0},
+  breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-2}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
+\title{Chương trình học}
+\author{Thanh Kim}
+\date{16/08/2020}
+
+\begin{document}
+\maketitle
+
+\hypertarget{chux1b0ux1a1ng-truxecnh-phuxe2n-tuxedch-dux1eef-liux1ec7u-huxe8-2020}{%
+\section{Chương trình Phân tích dữ liệu Hè
+2020}\label{chux1b0ux1a1ng-truxecnh-phuxe2n-tuxedch-dux1eef-liux1ec7u-huxe8-2020}}
+
+\textbf{Khóa học ``Ứng dụng ngôn ngữ R trong phân tích dữ liệu Y sinh''}
+
+\textbf{Đối tượng học}: Băng đảng YTCC
+
+\textbf{Mục tiêu học}: Chuyển đổi từ Stata qua R, và một số tò mò khác
+
+\textbf{Chương trình học}:
+
+Bài 1: Giới thiệu R và R studio
+
+Bài 2: Những trò cơ bản với R
+
+Bài 3: Thực hành những trò cơ bản với R
+
+Bài 4: Cuộc đời là một vòng lặp (Cơ bản)
+
+Bài 5: Thực hành vòng lặp (Cơ bản)
+
+Bài 6: Vệ sinh và tỉa tót (Dữ liệu)
+
+Bài 7: Thực hành vệ sinh và tỉa tót (Dữ liệu)
+
+Bài 8: Tìm hiểu, khám phá, mò mẫm (dữ liệu)
+
+Bài 9: Thực hành tìm hiểu, khám phá, và mò mẫm
+
+Bài 10: Có thể sinh sản nhiều ??!! (hay Reproducible Research)
+
+Bài 11: Thực hành sinh sản nhiều ??!! (hay Reproducible Research)
+
+Bài 12: Suy diễn, tưởng tượng (thống kê)
+
+Bài 13: Thực hành suy diễn, tưởng tượng (thống kê)
+
+Bài 14: Đầu quy là hồi tiên (Đầu tiên là hồi quy)
+
+Bài 15: Thực hành đầu quy là hồi tiên
+
+Thời gian dự kiến là 3 tháng. Có thể nhanh hoặc chậm hơn. Tuy nhiên mình
+cứ thoải mái và học theo tiến độ của nhóm.
+
+\textbf{Giáo trình học}
+
+PPT Tiếng Việt.
+
+\emph{Giáo trình được xây dựng từ những sách dưới đây. Mọi người có thể
+tìm đọc. Tất cả đều miễn phí.}
+
+Bài 1 - Bài 6: \url{https://leanpub.com/rprogramming}
+
+Bài 8 - Bài 9: \url{https://leanpub.com/exdata}
+
+Bài 9 - Bài 10: \url{https://leanpub.com/reportwriting}
+
+Bài 12 - Bài 13:
+\url{https://leanpub.com/LittleInferenceBook/read\#leanpub-auto-t-test-in-r}
+
+Bài 14 - Bài 15: \url{https://leanpub.com/regmods}
+
+\end{document}

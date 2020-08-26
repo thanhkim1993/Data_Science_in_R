@@ -1,0 +1,324 @@
+---
+title: "Class notes - Bài 2"
+author: "Kim Văn Thành"
+date: "19/08/2020"
+output:
+  ioslides_presentation:
+    highlight: pygments
+    incremental: yes
+    logo: YTCC.CoatofArms.jpg
+    smaller: yes
+    transition: faster
+  beamer_presentation:
+    highlight: pygments
+    incremental: yes
+job: Bộ môn Dịch tễ học, Đại học Y khoa Phạm Ngọc Thạch
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = TRUE, message = TRUE)
+```
+
+# Nội dung hôm nay
+- List
+- Factor
+- Missing data
+- Data Frame
+- Names
+
+# Lists
+
+## Lists
+
+- List là một dạng đặc biệt của Vector.
+
+- Nó chứa các giá trị thuộc các nhóm dữ liệu khác nhau.
+
+- List là dạng trình bày của các R Object đặc biệt. Ví dụ như mô hình Linear, mô hình Logistics.
+
+- Những R Object đặc biệt này phải ở dạng list vì nó chứa nhiều thông tin khác nhau. Đây cũng là đặc tính nổi trội của list.
+
+- Đặc tính nổi trội của List là chứa đựng rất nhiều thông tin đa dạng
+
+- Việc phân tích dữ liệu sẽ nhanh hơn rất nhiều khi sử dụng các hàm nhóm apply() làm việc với R Object dạng list. 
+
+## Lists
+```{r}
+x <- list(1, "a", TRUE, 1 + 4i)
+x
+class(x)
+```
+
+## Lists
+
+Ta có thể tạo List trống với độ dài định sẵn với hàm vector()
+
+```{r}
+x <- vector(mode = "list", length = 5) ## bản chất của list chính là vector
+print(x)
+```
+## Lists
+
+Khi dùng lệnh View() để xem các Object dạng list ở cửa sổ Source, ta thấy cách trình bày giá trị của list khác với vector hay matrix
+
+`x <- list(1, "a", TRUE, 1 + 4i)`
+
+`View(x, title = "List")`
+
+![](D:/OneDrive - pnt.edu.vn/Data_Science_in_R/SharingKnowledge/List_in_Source.png)
+
+## List
+
+Số thứ tự giá trị của List được đặt trong dấu ngoặc vuông kép _[[số thứ tự]]_
+
+![](D:/OneDrive - pnt.edu.vn/Data_Science_in_R/SharingKnowledge/List_in_Source.png)
+ 
+## List - Linear model
+
+```{r}
+x <- rnorm(1000) ; y <- rnorm(1000,10,20)
+model <- lm(y~x)
+summary(model)
+```
+
+## List - Linear model
+```{r}
+model_info <- summary(model)
+```
+
+View(model_info)
+
+![](D:/OneDrive - pnt.edu.vn/Data_Science_in_R/SharingKnowledge/Model_Info.png)
+# Factor
+
+## Factor 
+
+- Cấu trúc Factor giúp trình bày dữ liệu dạng định tính theo thứ tự hoặc không theo thứ tự.
+
+- Factor quan trọng trong việc xây dựng mô hình, đặc biệt khi làm việc với các hàm mô hình như lm() hay glm().
+
+- Factor hoạt động như việc chúng ta gán nhãn giá trị (lab val) cho biến số có 2 giá trị (1 và 0 hoặc 2) trong Stata. Ví dụ như gán 'Nam' cho giá trị 1, và 'Nữ' cho giá trị 0 hoặc 2.
+
+- Factor hoạt động ngược lại với Stata. Chúng ta có một biến số nhóm character với 2 giá trị là 'Nam' và 'Nữ'. 'Nam' sẽ được gán với giá trị 1, 'Nữ' được gán với giá trị 2. Nhìn chung, các giá trị sẽ được gán với một con số bắt đầu từ số 1.
+
+- Khác với dữ liệu dạng logic (TRUE/FALSE), các con số được gán này không thể dùng để tính toán đại số.
+
+
+## Factor 
+
+Dữ liệu Factor được tạo bằng hàm factor().
+
+```{r}
+x <- factor(c("yes","yes","no","yes","no"))
+x
+attributes(x)
+table(x)
+```
+
+## Factor
+
+Ở phần kết quả, chúng ta thấy 'Levels: no yes'. Điều này có nghĩa 'no' tương ứng với 1, 'yes' tương ứng với 2. Nếu không có yêu cầu cụ thể, hàm factor() tự sắp xếp thứ tự theo vị trí của chữ cái đầu trong bảng chữ cái.
+
+```{r}
+unclass(x)
+```
+
+## Factor
+
+```{r}
+x <- factor(c("yes","yes","no","yes","no"), levels = c("yes","no"))
+x
+### Hoặc chúng ta có thể sử dụng hàm levels() để xác định đặc tính của dữ liệu. 
+## Điều này tương tự khi ta sử dụng hàm dim() để định dạng vector.
+
+levels(x) <- c("no", "yes") 
+x
+```
+
+# Missing data
+
+## Missing data
+
+- Trong R, dữ liệu khuyết được định danh là NA (Not Applicable) hoặc NaN (Not a Number). 
+
+- Chúng là những từ dành riêng (reserved word) trong R. 
+
+- Từ dành riêng là những từ được R hiểu theo nghĩa đặc biệt. Điều này có nghĩa  
+  + Chúng có vai trò cụ thể.  
+  + Chuyển thành character nếu chúng ta sử dụng dấu nháy đôi.  
+
+## Missing data
+
+```{r message=TRUE, warning=TRUE}
+# Tất cả những chữ cái trong R đều cần dấu nháy đôi. Nếu không có, R sẽ không hiểu. 
+"a"
+x <- "a"
+x
+```
+
+## Missing data
+
+```{r }
+# Tuy nhiên, nó vẫn hiểu Reserved words
+NA; class(NA)
+NaN; class(NaN)
+x <- Inf ; x ; class(x)
+```
+
+## Missing data
+
+- Những từ dành riêng thường sử dụng như  
+  + Nhóm logical, numeric: TRUE, FALSE    
+  + Nhóm numeric: NaN, Inf, -Inf  
+  + Nhóm tự do (có thể ở tất cả nhóm): NA. Như vậy ta sẽ có numeric NA, integer NA, character NA, etc.  
+
+- Để kiểm tra một đối tượng có chứa dữ liệu khuyết, ta dùng  
+  + Hàm is.na() cho NA  
+  + Hàm is.nan() cho NaN
+
+## Missing data
+
+```{r}
+# Tạo một vector chứa NA
+x <- c(1,2,NA,10,3)
+# Trả về một vector logic chỉ ra thành phần nào là NA
+is.na(x)
+# Trả về một vector logic chỉ ra thành phần nào là NaN
+is.nan(x)
+# Bây giờ tạo một vector có cả giá trị NA và NaN
+x <- c(1,2,NaN,NA,4) ; is.na(x) ; is.nan(x)
+```
+
+
+# Data Frame
+
+## Data frames
+
+- Data frames lưu trữ dữ liệu bảng - một dạng dữ liệu quan trong R. 
+
+- Data Frames là một dạng trình bày đặc biệt của list - khi các thành phần của list có cùng độ dài. 
+
+- Các thành phần của list được xem như là một cột. Độ dài của mỗi thành phần trong list là số hàng.  
+
+- Khác với matrix, data frames có khá năng lưu trữ các nhóm đối tượng khác nhau ở các cột. Trong khi đó, các thành phần trong matrix phải cùng nhóm.
+
+- Thậm chí data frame có thê lưu trữ data frame như là một thành phần.  
+
+## Data frame
+
+Data frame có thể được tạo bằng hàm data.frame().
+
+```{r}
+x <- data.frame(foo = 1:4, bar = c(T,T,F,F)); x
+dim(x) # Tương tự như matrix, data frame có dimension
+nrow(x) ; ncol(x)  # number of row, number of collumn
+```
+
+# Names
+
+## Names
+
+- R Object có thể được đặt tên.
+
+- Việc này sẽ thuận lợi trong việc truy xuất thông tin.
+
+## Names
+
+```{r}
+v <- 1:3
+v # Vector nhóm numeric, có ba giá trị 1,2,3
+names(v)
+```
+
+## Names 
+
+```{r }
+# Tương tự như dim() và level(), names() thuộc attributes của R object, và là một vector.
+names(v) <- c("Ho Chi Minh", "Ha Noi", "Da Nang") 
+v # Vector nhóm numeric, có ba giá trị 1,2,3 và tên tương ứng là "Hồ Chí Minh", "Hà Nội", "Đà nẵng"
+names(v) # Vector nhóm character có 3 giá trị
+```
+
+## Names
+
+Matrix cũng có tên hàng và tên cột
+
+```{r}
+m <- matrix(1:4,nrow =2, ncol = 2) ; m
+dimnames(m)
+dimnames(m) <- list(c("a","b"),             # Tên hàng
+                    c("c","d"))             # Tên cột
+m
+```
+
+## Names
+
+Tên hàng và tên cột có thể được đặt riêng bằng hàm colnames() và rownames()
+
+```{r}
+colnames(m) <- c('h','f')    # Tên cột
+rownames(m) <- c("x","z")    # Tên hàng
+m
+```
+
+## Names 
+
+Ta cũng đặt tên cho từng thành phần trong List
+
+```{r}
+l <- list(1,2,3); l
+names(l)
+```
+
+## Names 
+
+```{r}
+l <- list('Ho Chi Minh' = 1, Hanoi = 2, DaNang = 3); l
+names(l)
+```
+
+## Names
+
+Tương tự như vậy cho data frame
+
+```{r}
+df <- data.frame(1:5,
+                 seq(1, 10, length = 5),
+                 c("a","b","c","d","f"),
+                 sample(LETTERS,5,replace = FALSE, prob = NULL))
+head(df,2)
+names(df)
+```
+
+## Names
+
+```{r}
+colnames(df) <- c("number_1",
+                  "number_2",
+                  "letter_1",
+                  "letter_2") # Tương ứng số cột của df
+names(df)
+head(df,2)
+```
+
+# Tổng kết
+
+## Tổng kết
+
+- Có rất nhiều dạng dữ liệu trong R. Ở phần này chúng ta đã nói về
+
+  + Nhóm cơ bản: Numeric, logical, character, integer, complex
+  + Vector, lists
+  + Factor
+  + Missing values
+  + Data frames và Matrix
+
+- Tất cả R Object đều có attributes để mô tả chúng. Một trong số đó là names, dimension đối với data frame và matrix, và level đối với factor.
+
+## Cám ơn mọi người đã chú ý lắng nghe 
+
+```{r echo=FALSE, fig.width= 4, fig.height=4}
+dat <- read.table('http://www4.stat.ncsu.edu/~stefanski/NSF_Supported/Hidden_Images/\
+orly_owl_files/orly_owl_Lin_4p_5_flat.txt', header = FALSE)
+fit <- lm(V1 ~ . - 1, data = dat); plot(predict(fit), resid(fit), pch = '.', frame = FALSE)
+```
