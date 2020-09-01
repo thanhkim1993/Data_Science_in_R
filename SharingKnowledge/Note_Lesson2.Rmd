@@ -47,7 +47,11 @@ Ta có thể tạo List trống với độ dài định sẵn với hàm vector
 ```{r}
 x <- vector(mode = "list", length = 5) ## Bản chất của list chính là vector
 print(x)
+
+
 ```
+
+
   
 Khi dùng lệnh View() để xem các Object dạng list ở cửa sổ Source, ta thấy cách trình bày giá trị của list khác với vector hay matrix
 

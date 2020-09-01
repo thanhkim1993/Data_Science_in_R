@@ -73,6 +73,11 @@ Số thứ tự giá trị của List được đặt trong dấu ngoặc vuông
 
 ![](D:/OneDrive - pnt.edu.vn/Data_Science_in_R/SharingKnowledge/List_in_Source.png)
  
+ 
+__Mỗi dấu phẩy là một thành phần__
+__Ví dụ một list có các thành phần với độ dài khác nhau__
+
+
 ## List - Linear model
 
 ```{r}

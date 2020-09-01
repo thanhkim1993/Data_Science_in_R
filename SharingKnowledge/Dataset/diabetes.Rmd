@@ -1,0 +1,108 @@
+---
+title: "Diabetes data set"
+author: "Thanh Kim"
+date: "30/08/2020"
+output: html_document
+---
+## Dữ liệu
+Cắt dọc
+Đối tượng nghiên cứu
+ - Nữ
+ - >= 25 tuổi tại thời điểm khám được đánh dấu
+ - Thời điểm được đánh dấu là thời điểm không ghi nhận ĐTĐ qua test OGTT và thỏa 1 trong 2
+   + ĐTĐ đưuọc chẩn đoán trong vòng 5 năm từ thời điểm khám được đánh dấu
+   + OGTT được thực hiện hơn 5 năm sau không cho thấy ĐTĐ
+ - Những ca ĐTĐ xuất hiện trong vòng 1 năm sau khi khám được loại khỏi mẫu, vì những ca này rất dễ để dự đoán. 75% trong số ca bị loại được chẩn đoaán trong vòng 06 tháng.
+
+## Câu hỏi nghiên cứu
+1. Có sự khác biệt về BMI và số lần sanh ở nhóm được chẩn đoán Đái tháo đường và nhóm không được chẩn đoán Đái tháo đường?, và
+2. Có mối liên hệ giữa chẩn đoán Đái tháo đường và hàm số phả hệ đái tháo đường.
+Hàm số phả hệ đái tháo đường: Cho thấy khả năng xuất hiện đái tháo đường qua việc ngoại suy từ phả hệ.
+
+## Package sử dụng
+```{r}
+library(ggplot2) ; library(plotly)
+```
+
+
+## Tải dữ liệu
+```{r}
+library(readr); library(readxl)
+diabetes_metadata <- read_excel("diabetes_metadata.xlsx")
+diabetes <- read_csv("diabetes.csv")
+```
+
+
+## Khá phá dữ liệu
+
+#### Thô sơ
+```{r}
+class(diabetes)   # Dạng dữ liệu của đối tượng diabetes
+dim(diabetes)     # Xem dimension của đối tượng diabetes
+head(diabetes)    # Xem 6 dữ liệu đầu của các cột
+tail(diabetes)    # Xem 6 dữ liệu cuối của các cột
+for (i in seq_len(length(names(diabetes)))) {classObject[i] <- class(diabetes[,names(diabetes[i])])}  # Nhóm dữ liệu các cột
+```
+
+``` {r}
+is.na(diabetes) # Đánh giá dữ liệu khuyết
+check_missing <- is.na(diabetes) # Gán vào một đối tượng R
+class(check_missing) ; class(is.na(diabetes)) # Xem nhóm của đối tượng R
+sum(check_missing)   # Kiểm tổng dữ liệu khuyết
+apply(check_missing,2,sum) # Kiểm số lượng dữ liệu khuyết theo từng biến
+apply(check_missing,2,mean)  # Kiểm % dữ liệu khuyết theo từng biến
+class(apply(check_missing,2,mean))   # Kiểm tra nhóm dữ liệu của đối tượng apply(check_missing,2,mean)
+names(apply(check_missing,2,mean))   # Kiểm tra names attributes của đối tượng apply(check_missing,2,mean)
+```
+
+```{r}
+
+str(diabetes)     # str ~ structure. Xem cấu trúc dữ liệu
+summary(diabetes) # Một cái nhìn chung
+```
+
+#### Hình ảnh
+
+```{r Histogram}
+par(mfrow = c(2,4))
+hist(diabetes$Pregnancies, col = "grey");hist(diabetes$Glucose, col = "light blue"); hist(diabetes$BloodPressure, col = "light green");hist(diabetes$SkinThickness,col = "brown"); hist(diabetes$Insulin,col = "mistyrose");with(diabetes,hist(BMI,col = "wheat"))
+attach(diabetes);hist(diabetes$DiabetesPedigreeFunction, col = "snow");detach(diabetes)
+```
+
+```{r Boxplot}
+par(mfrow = c(2,4))
+boxplot(diabetes$Pregnancies, col = "grey");boxplot(diabetes$Glucose, col = "light blue"); boxplot(diabetes$BloodPressure, col = "light green");boxplot(diabetes$SkinThickness,col = "brown"); boxplot(diabetes$Insulin,col = "mistyrose");with(diabetes,boxplot(BMI,col = "wheat"))
+attach(diabetes);boxplot(diabetes$DiabetesPedigreeFunction, col = "snow");detach(diabetes)
+```
+
+```{r}
+hist(diabetes$BMI, col = as.factor(diabetes$Outcome))
+legend("topright", col = as.factor(diabetes$Outcome), legend = c("Diabetes","No Diabetes"))
+qplot(BMI, data = diabetes, fill = as.factor(Outcome), bins = 15)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
